@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="google-signin-client_id" content="886798917212-6gi02623tr0oimq5p6knhn013msaa1im.apps.googleusercontent.com">
+  
   <!--
     If you are serving your web app in a path other than the root, change the
     href value below to reflect the base path you are serving from.
@@ -33,6 +35,7 @@
   <!-- Firebase config -->
   <script src="/__/firebase/8.6.1/firebase-app.js"></script>
   <script src="/__/firebase/8.6.1/firebase-auth.js"></script>
+  <script src="/__/firebase/8.6.1/firebase-firestore.js"></script>
   <script src="/__/firebase/init.js"></script>
 
   <!-- This script installs service_worker.js to provide PWA functionality to
