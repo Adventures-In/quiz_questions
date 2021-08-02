@@ -27,3 +27,13 @@ linter:
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
+
+analyzer:
+  exclude: 
+    - build/**
+    - lib/**/*.g.dart
+    - lib/**/*.freezed.dart
+    - test/**/*.mocks.dart
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
