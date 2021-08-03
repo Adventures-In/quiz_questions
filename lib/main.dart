@@ -1,6 +1,10 @@
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:quiz_questions/quiz/actions/tap_my_quizzes_action.dart';
+import 'package:quiz_questions/quiz/middleware/tap_my_quizzes_middleware.dart';
+import 'package:quiz_questions/quiz/models/quiz.dart';
 import 'package:redfire/types.dart';
 import 'package:redfire/widgets.dart';
 
@@ -10,8 +14,9 @@ part 'main.g.dart';
 void main() => runApp(AppWidget<AppState>(
       initialState: AppState.init(),
       initialActions: const [],
-      middlewares: const [],
+      middlewares: [TapMyQuizzesMiddleware()],
       reducers: const [],
+      title: 'Quiz Questions',
       mainPage: const MainPage(),
     ));
 
@@ -26,6 +31,7 @@ class AppState with _$AppState, RedFireState {
     ProfileData? profile,
 
     /// Additional AppState members
+    required IList<Quiz> quizzes,
   }) = _AppState;
 
   factory AppState.init() => AppState(
@@ -36,6 +42,7 @@ class AppState with _$AppState, RedFireState {
         settings: Settings.init(),
 
         /// Additional init code
+        quizzes: <Quiz>[].lock,
       );
 
   factory AppState.fromJson(Map<String, Object?> json) =>
@@ -47,6 +54,12 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('MainPage'));
+    return StoreConnector<AppState, IList<Quiz>>(
+        distinct: true,
+        onInit: (store) => store.dispatch(TapMyQuizzesAction()),
+        converter: (store) => store.state.quizzes,
+        builder: (context, quizzes) {
+          return const Center(child: Text('MainPage'));
+        });
   }
 }
