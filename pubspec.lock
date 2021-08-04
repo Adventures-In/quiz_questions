@@ -316,7 +316,7 @@ packages:
       name: google_sign_in
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.0.5"
+    version: "5.0.7"
   google_sign_in_platform_interface:
     dependency: transitive
     description:
@@ -496,8 +496,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: HEAD
-      resolved-ref: "0b4dcba1cfaa06f7775ab6546fb5887308622cff"
+      ref: update-pages-datastructure
+      resolved-ref: "137f479458cc67c0ee2275cea7ddd3b98f7db5fb"
       url: "https://github.com/enspyrco/redfire.git"
     source: git
     version: "0.0.1"
@@ -506,7 +506,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: d701ad201387b214e4cc9d41f7534917fabcac74
+      resolved-ref: "47c0cd7e8ae93843f1c94fb2e8d85f2e92896b0d"
       url: "https://github.com/enspyrco/redfire_test.git"
     source: git
     version: "0.0.1"

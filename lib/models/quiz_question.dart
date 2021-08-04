@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:quiz_questions/quiz/models/quiz_question_component.dart';
+import 'package:quiz_questions/models/quiz_question_component.dart';
 import 'package:redfire/types.dart';
 
 part 'quiz_question.freezed.dart';
