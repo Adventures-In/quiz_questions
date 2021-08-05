@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:quiz_questions/quiz/actions/store_quizzes_action.dart';
-import 'package:quiz_questions/quiz/actions/tap_my_quizzes_action.dart';
-import 'package:quiz_questions/quiz/models/quiz.dart';
+import 'package:quiz_questions/actions/store_quizzes_action.dart';
+import 'package:quiz_questions/actions/tap_my_quizzes_action.dart';
+import 'package:quiz_questions/models/quiz.dart';
 import 'package:redfire/extensions.dart';
 import 'package:redfire/services.dart';
 import 'package:redfire/types.dart';
