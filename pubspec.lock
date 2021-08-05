@@ -496,8 +496,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: update-pages-datastructure
-      resolved-ref: "137f479458cc67c0ee2275cea7ddd3b98f7db5fb"
+      ref: HEAD
+      resolved-ref: d8326327e36eb5b17847aada50a482d428323079
       url: "https://github.com/enspyrco/redfire.git"
     source: git
     version: "0.0.1"
@@ -506,7 +506,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "47c0cd7e8ae93843f1c94fb2e8d85f2e92896b0d"
+      resolved-ref: "017b52aae3d0ac8088ed72f6979dcdb05b33199d"
       url: "https://github.com/enspyrco/redfire_test.git"
     source: git
     version: "0.0.1"

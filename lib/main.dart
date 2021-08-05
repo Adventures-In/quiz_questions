@@ -7,21 +7,13 @@ import 'package:quiz_questions/actions/tap_my_quizzes_action.dart';
 import 'package:quiz_questions/middleware/tap_my_quizzes_middleware.dart';
 import 'package:quiz_questions/models/quiz.dart';
 import 'package:quiz_questions/models/quiz_designer_v_m.dart';
+import 'package:quiz_questions/pages/new_quiz_page_data_transforms.dart';
 import 'package:quiz_questions/views/quiz_designer_view.dart';
 import 'package:redfire/types.dart';
 import 'package:redfire/widgets.dart';
 
 part 'main.freezed.dart';
 part 'main.g.dart';
-
-void main() => runApp(AppWidget<AppState>(
-      initialState: AppState.init(),
-      initialActions: const [],
-      middlewares: [TapMyQuizzesMiddleware()],
-      reducers: const [],
-      title: 'Quiz Questions',
-      mainPage: const MainPage(),
-    ));
 
 @freezed
 class AppState with _$AppState, RedFireState {
@@ -42,7 +34,7 @@ class AppState with _$AppState, RedFireState {
 
       /// RedFire init code
       auth: AuthState.init(),
-      pages: <PageData>[InitialPageData()].lock,
+      pages: IList<PageData>([InitialPageData()]),
       problems: IList(),
       settings: Settings.init(),
 
@@ -74,3 +66,13 @@ class MainPage extends StatelessWidget {
         });
   }
 }
+
+void main() => runApp(AppWidget<AppState>(
+      initialState: AppState.init(),
+      initialActions: const [],
+      middlewares: [TapMyQuizzesMiddleware()],
+      reducers: const [],
+      title: 'Quiz Questions',
+      mainPage: const MainPage(),
+      pageTransforms: [NewQuizPageDataTransforms()],
+    ));

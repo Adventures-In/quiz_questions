@@ -3,9 +3,9 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:quiz_questions/actions/select_quiz_action.dart';
 import 'package:quiz_questions/models/quiz.dart';
 import 'package:quiz_questions/models/quiz_designer_v_m.dart';
+import 'package:quiz_questions/pages/new_quiz_page_data.dart';
 import 'package:redfire/actions.dart';
 import 'package:redfire/extensions.dart';
-import 'package:redfire/types.dart';
 
 import '../main.dart';
 
@@ -32,7 +32,7 @@ class QuizDesignerView extends StatelessWidget {
                     ))
                 .toList(),
             onChanged: (selection) => (selection == addNewItem)
-                ? context.dispatch<AppState>(PushPageAction(ProfilePageData()))
+                ? context.dispatch<AppState>(PushPageAction(NewQuizPageData()))
                 : context.dispatch<AppState>(SelectQuizAction(selection)),
           ));
         });

@@ -10,9 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   redfire:
-    git: 
-      url: https://github.com/enspyrco/redfire.git
-      ref: update-pages-datastructure
+    git: https://github.com/enspyrco/redfire.git
     # path: /Users/nick/git/orgs/enspyrco/redfire
   freezed_annotation:
   json_annotation:
