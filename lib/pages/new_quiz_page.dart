@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_questions/actions/create_quiz_action.dart';
 import 'package:quiz_questions/main.dart';
 import 'package:redfire/actions.dart';
 import 'package:redfire/extensions.dart';
@@ -12,45 +13,36 @@ class NewQuizPage extends StatefulWidget {
 }
 
 class _NewQuizPageState extends State<NewQuizPage> {
-
   bool creating = false;
+  String name = '';
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-            title: const Text('Enter a name'),
-            content: (creating)
-                ? const WaitingIndicator('creating')
-                : SingleChildScrollView(
-                    child: TextField(
-                    autofocus: true,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Here...',
-                    ),
-                    onChanged: (text) { setState(() {
-                      
-                    });},
-                  )),
-            actions: <Widget>[
-              OutlinedButton(
-                  onPressed: () =>
-                      context.dispatch<AppState>(RemoveCurrentPageAction()),
-                  child: const Text('Cancel')),
-              OutlinedButton(
-                  onPressed: () =>
-                      context.dispatch<AppState>(CreateNewQuizAction(name: )),
-                  child: const Text('Create')),
-            ],
-          );
-        }
+      title: const Text('Enter a name'),
+      content: (creating)
+          ? const WaitingIndicator('creating')
+          : SingleChildScrollView(
+              child: TextField(
+                  autofocus: true,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Here...',
+                  ),
+                  onChanged: (text) => setState(() => name = text))),
+      actions: <Widget>[
+        OutlinedButton(
+            onPressed: () {
+              context.dispatch<AppState>(RemoveCurrentPageAction());
+            },
+            child: const Text('Cancel')),
+        OutlinedButton(
+            onPressed: () {
+              context.dispatch<AppState>(CreateQuizAction(name: name));
+              setState(() => creating = true);
+            },
+            child: const Text('Create')),
+      ],
+    );
+  }
 }
-
-// StoreConnector<AppState, NewQuizVM>(
-//         distinct: true,
-//         converter: (store) => store.state.quizDesigner.newQuiz,
-//         builder: (context, vm) {
-//           if (vm.finished == true) {
-//             context.dispatch<AppState>(RemoveCurrentPageAction());
-//             return Container();
-//           }
