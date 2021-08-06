@@ -39,7 +39,7 @@ class AppState with _$AppState, RedFireState {
       settings: Settings.init(),
 
       /// Additional init code
-      quizDesigner: QuizDesignerVM(quizzes: <Quiz>[].lock));
+      quizDesigner: QuizDesignerVM(quizzesList: <Quiz>[].lock));
 
   factory AppState.fromJson(Map<String, Object?> json) =>
       _$AppStateFromJson(json);

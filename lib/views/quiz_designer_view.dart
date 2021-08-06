@@ -24,7 +24,7 @@ class QuizDesignerView extends StatelessWidget {
             isExpanded: true,
             value: quizDesigner.selectedQuiz,
             hint: const Text('Tap to select or create'),
-            items: quizDesigner.quizzes
+            items: quizDesigner.quizzesList
                 .add(addNewItem)
                 .map((quiz) => DropdownMenuItem(
                       value: quiz,

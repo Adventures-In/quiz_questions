@@ -8,8 +8,8 @@ part 'quiz_designer_v_m.g.dart';
 
 @freezed
 class QuizDesignerVM with _$QuizDesignerVM, ReduxModel {
-  factory QuizDesignerVM({required IList<Quiz> quizzes, Quiz? selectedQuiz}) =
-      _QuizDesignerVM;
+  factory QuizDesignerVM(
+      {required IList<Quiz> quizzesList, Quiz? selectedQuiz}) = _QuizDesignerVM;
 
   factory QuizDesignerVM.fromJson(Map<String, Object?> json) =>
       _$QuizDesignerVMFromJson(json);
