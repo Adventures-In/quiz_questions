@@ -28,7 +28,7 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.7.0"
+    version: "2.8.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -288,7 +288,7 @@ packages:
       name: freezed
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.3"
+    version: "0.14.4"
   freezed_annotation:
     dependency: "direct main"
     description:
@@ -435,7 +435,7 @@ packages:
       name: mockito
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.0.13"
+    version: "5.0.14"
   package_config:
     dependency: transitive
     description:
@@ -495,20 +495,16 @@ packages:
   redfire:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: d8326327e36eb5b17847aada50a482d428323079
-      url: "https://github.com/enspyrco/redfire.git"
-    source: git
+      path: "/Users/nick/git/orgs/enspyrco/redfire"
+      relative: false
+    source: path
     version: "0.0.1"
   redfire_test:
     dependency: "direct dev"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "017b52aae3d0ac8088ed72f6979dcdb05b33199d"
-      url: "https://github.com/enspyrco/redfire_test.git"
-    source: git
+      path: "/Users/nick/git/orgs/enspyrco/redfire_test"
+      relative: false
+    source: path
     version: "0.0.1"
   redux:
     dependency: "direct main"

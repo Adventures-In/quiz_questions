@@ -9,8 +9,9 @@ part 'quiz.g.dart';
 class Quiz with _$Quiz, ReduxModel {
   factory Quiz(
       {required String id,
+      required String ownerId,
       required String name,
-      required List<QuizQuestion> questions}) = _Quiz;
+      @Default(<QuizQuestion>[]) List<QuizQuestion> questions}) = _Quiz;
 
   factory Quiz.fromJson(Map<String, Object?> json) => _$QuizFromJson(json);
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_questions/actions/create_quiz_action.dart';
-import 'package:quiz_questions/main.dart';
+import 'package:quiz_questions/models/app_state.dart';
 import 'package:redfire/actions.dart';
 import 'package:redfire/extensions.dart';
 import 'package:redfire/widgets.dart';
@@ -19,29 +19,29 @@ class _NewQuizPageState extends State<NewQuizPage> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Enter a name'),
+      title: (creating) ? const Text('') : const Text('Enter a...'),
       content: (creating)
-          ? const WaitingIndicator('creating')
+          ? const SingleChildScrollView(child: WaitingIndicator('creating'))
           : SingleChildScrollView(
               child: TextField(
                   autofocus: true,
                   decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Here...',
-                  ),
+                      border: OutlineInputBorder(), labelText: 'name'),
                   onChanged: (text) => setState(() => name = text))),
       actions: <Widget>[
-        OutlinedButton(
-            onPressed: () {
-              context.dispatch<AppState>(RemoveCurrentPageAction());
-            },
-            child: const Text('Cancel')),
-        OutlinedButton(
-            onPressed: () {
-              context.dispatch<AppState>(CreateQuizAction(name: name));
-              setState(() => creating = true);
-            },
-            child: const Text('Create')),
+        if (!creating)
+          OutlinedButton(
+              onPressed: () {
+                context.dispatch<AppState>(RemoveCurrentPageAction());
+              },
+              child: const Text('Cancel')),
+        if (!creating)
+          OutlinedButton(
+              onPressed: () {
+                context.dispatch<AppState>(CreateQuizAction(name: name));
+                setState(() => creating = true);
+              },
+              child: const Text('Create')),
       ],
     );
   }

@@ -1,15 +1,17 @@
 import 'dart:async';
 
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:quiz_questions/actions/store_quizzes_action.dart';
 import 'package:quiz_questions/actions/tap_my_quizzes_action.dart';
+import 'package:quiz_questions/models/app_state.dart';
 import 'package:quiz_questions/models/quiz.dart';
 import 'package:redfire/extensions.dart';
 import 'package:redfire/services.dart';
 import 'package:redfire/types.dart';
 import 'package:redux/redux.dart';
 
-class TapMyQuizzesMiddleware<T extends RedFireState>
-    extends TypedMiddleware<T, TapMyQuizzesAction> {
+class TapMyQuizzesMiddleware
+    extends TypedMiddleware<AppState, TapMyQuizzesAction> {
   TapMyQuizzesMiddleware()
       : super((store, action, next) async {
           next(action);
@@ -30,7 +32,7 @@ class TapMyQuizzesMiddleware<T extends RedFireState>
             // Direct the stream of quizzes to the store.
             _subscription = quizzesChanges.listen((event) {
               store.dispatch(StoreQuizzesAction(
-                  data: event.map<Quiz>((e) => Quiz.fromJson(e)).toList()));
+                  data: event.map<Quiz>((e) => Quiz.fromJson(e)).toIList()));
             }, onError: store.dispatchProblem);
           } catch (error, trace) {
             store.dispatchProblem(error, trace);

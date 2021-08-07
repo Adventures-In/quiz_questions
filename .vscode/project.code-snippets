@@ -70,34 +70,41 @@
     "description": "freezed action"
   },
   "middleware class": {
-    "prefix": "mdlware - redfire",
+    "prefix": "mdlware",
     "body": [
-      "import 'package:redfire/actions.dart';",
-      "import 'package:${WORKSPACE_NAME}/state/app_state.dart';",
+      "import 'package:${WORKSPACE_NAME}/actions/${TM_FILENAME_BASE}_action.dart';",
+      "import 'package:${WORKSPACE_NAME}/models/app_state.dart';",
+      "import 'package:redfire/extensions.dart';",
+      "import 'package:redfire/services.dart';",
       "import 'package:redux/redux.dart';",
       "",
-      "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}Middleware extends TypedMiddleware<AppState, ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}Action> {",
-      "\t${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}Middleware(${1/(.*)/${1:/pascalcase}/g}Service ${1}Service) : super((store, action, next) async {",
+      "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}Middleware<T extends AppState> extends TypedMiddleware<T, ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}Action> {",
+      "\t${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}Middleware() : super((store, action, next) async {",
       "\t\tnext(action);",
       "",
-      "\t\tfinal  = await ${1/(.*)/${1:/pascalcase}/g}Service${2};",
-      "\t\tstore.dispatch();",
+      "\t\ttry {",
+      "\t\t\tfinal service = RedFireLocator.get${1}Service();",
+      "\t\t\tawait service.",
+      "\t\t\tstore.dispatch();",
+      "\t\t} catch (error, trace) {",
+      "\t\t\tstore.dispatchProblem(error, trace);",
+      "\t\t}",
       "\t});",
       "}"
     ],
-    "description": "middleware for redfire action"
+    "description": "middleware class"
   },
   "reducer class": {
-    "prefix": "reducer - redfire",
+    "prefix": "reducer",
     "body": [
-      "import 'package:redfire/actions.dart';",
-      "import 'package:${WORKSPACE_NAME}/state/app_state.dart';",
+      "import 'package:${WORKSPACE_NAME}/actions/${TM_FILENAME_BASE}_action.dart';",
+      "import 'package:${WORKSPACE_NAME}/models/app_state.dart';",
       "import 'package:redux/redux.dart';",
       "",
       "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}Reducer extends TypedReducer<AppState, ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}Action> {",
       "\t${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}Reducer() : super((state, action) => state.copyWith(${1}: action.${1}),);",
       "}",
     ],
-    "description": "reducer for redfire action"
+    "description": "reducer class"
   }
 }
