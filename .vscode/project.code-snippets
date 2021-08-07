@@ -102,7 +102,7 @@
       "import 'package:redux/redux.dart';",
       "",
       "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}Reducer extends TypedReducer<AppState, ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}Action> {",
-      "\t${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}Reducer() : super((state, action) => state.copyWith(${1}: action.${1}),);",
+      "\t${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}Reducer() : super((state, action) => state.copyWith${1} (),);",
       "}",
     ],
     "description": "reducer class"
